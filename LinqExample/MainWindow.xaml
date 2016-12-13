@@ -7,8 +7,13 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="450">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
         <ListView Name="lstProduct"
-                 ItemsSource="{Binding Items, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                 ItemsSource="{Binding Items, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                  Grid.Row="0">
             <ListView.View>
                 <GridView AllowsColumnReorder="False">
                     <GridViewColumn Header="ID" Width="150">
@@ -35,6 +40,34 @@
                 </GridView>
             </ListView.View>
         </ListView>
-
+        <ListView Name="lstEmployee"
+                 ItemsSource="{Binding EmployeeList, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                  Grid.Row="1">
+            <ListView.View>
+                <GridView AllowsColumnReorder="False">
+                    <GridViewColumn Header="Employee ID" Width="150">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Content="{Binding EmployeeID}" HorizontalAlignment="Center" VerticalAlignment="Top"></Label>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Employee Name" Width="150">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Content="{Binding EmployeeName}" HorizontalAlignment="Center" VerticalAlignment="Top"></Label>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Position" Width="150">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Content="{Binding Position}" HorizontalAlignment="Center" VerticalAlignment="Top"></Label>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </Window>
