@@ -40,15 +40,16 @@ namespace LinqExample
                                 new Employee { EmployeeID = 105, EmployeeName = "Tanmay Teckchandani", Position = "Developer" },
                                 };
             
-            var AllProductList = products.Select(p => new {p});
+            var AllProductList = products.Select(p => new {p.ProductID, p.ProductName, p.UnitPrice});
 
             var productCandy = products.Where(p => p.ProductName.Contains("candy"));
             productCandy = productCandy.ToList<Product>();
              _Items = productCandy.ToList();
              Items = _Items;
 
-            var AllEmployee = from e in employee
-                              select e;
+            var AllEmployee = (from e in employee
+                              orderby e.EmployeeName
+                              select e).ToList() ;
             AllEmployee = AllEmployee.ToList<Employee>();
             _EmployeeList = AllEmployee.ToList();
             AllEmployee = _EmployeeList;
