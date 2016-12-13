@@ -20,9 +20,12 @@ namespace LinqExample
     /// </summary>
     public partial class MainWindow : Window
     {
+        Program p;
         public MainWindow()
         {
             InitializeComponent();
+            p = new Program();
+            DataContext = p;
         }
     }
 }
